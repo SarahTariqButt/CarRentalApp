@@ -1,0 +1,56 @@
+
+@model List<CarRentalApp.Models.Car>
+
+<div class="container">
+
+    <div class="row mb-3">
+        <div class="col">
+            <h1>Booked Cars</h1>
+        </div>
+
+        <div class="col text-end">
+            <a class="btn btn-primary" href="/Cars">
+                Back to Cars
+            </a>
+        </div>
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            No cars have been booked yet.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price Per Day</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var cr in Model)
+                    {
+                        <tr>
+                            <td>@cr.Id</td>
+                            <td>@cr.Name</td>
+                            <td>PKR @cr.PricePerDay</td>
+                            <td>
+                                <span class="badge bg-warning text-dark">
+                                    Booked
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+</div>
